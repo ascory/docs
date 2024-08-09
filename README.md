@@ -35,3 +35,6 @@ Example:
     }
 }
 ```
+## Webhook alerts
+> [!WARNING]
+> Webhook alerts don't just come at the time of a successful payment. Please check the data->type element, which can take the following values: success, refund, fail.
