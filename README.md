@@ -14,3 +14,24 @@ $key2 = "56d4f8ee1ee480707ee9f3210da5aca2";
 $string = $id.":".$key1.":".$key2; # 1:c0a9cc6d8d4243c4a644f8e57d085438:56d4f8ee1ee480707ee9f3210da5aca2
 $hash = password_hash($string, PASSWORD_BCRYPT); 
 ```
+
+All requests to the API must be sent as a POST request.
+
+If the request is successful, the server returns an array where the "code" element is assigned the value 200 and the "data" element is assigned the information you required from the API.
+
+Example:
+```json
+{
+    "code": 200,
+    "data": "OK"
+}
+```
+```json
+{
+    "code": 400,
+    "data": {
+        "ru": "Пример сообщения об ошибке.",
+        "en": "Example error message."
+    }
+}
+```
