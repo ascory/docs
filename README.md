@@ -5,6 +5,7 @@ Almost any interaction with the API requires specifying a store ID and hash. You
 
 The hash is a BCrypt hashed string containing the first storage key, the second storage key, and the IP address of the server from which the request was sent. A ":" must be inserted between the data. Note that your server can send the request via IPv6.
 
+Example:
 ```php
 <?php
 $id = 1;
