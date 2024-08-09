@@ -69,3 +69,18 @@ $key2 = "56d4f8ee1ee480707ee9f3210da5aca2";
 $data = $_REQUEST["data"];
 $hash = $shopId.json_encode($data)..$key1.$key2;
 ```
+
+"if hash = newHash" will not work for hash verification. This is because BCrypt returns different values each time. How to verify BCrypt hash check in the documentation of your programming language.
+
+Example:
+```php
+<?php
+$shopId = 1;
+$key1 = "c0a9cc6d8d4243c4a644f8e57d085438";
+$key2 = "56d4f8ee1ee480707ee9f3210da5aca2";
+$data = $_REQUEST["data"];
+$hash = $shopId.json_encode($data)..$key1.$key2;
+if(!password_verify($hash, $_REQUEST["hash"])){
+    die("Incorrect hash.");
+}
+```
