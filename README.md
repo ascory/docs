@@ -8,10 +8,10 @@ The hash is a BCrypt hashed string containing the first storage key, the second 
 Example:
 ```php
 <?php
-$shopId = 1;
+$ip = "1.1.1.1";
 $key1 = "c0a9cc6d8d4243c4a644f8e57d085438";
 $key2 = "56d4f8ee1ee480707ee9f3210da5aca2";
-$string = $shopId.":".$key1.":".$key2; # 1:c0a9cc6d8d4243c4a644f8e57d085438:56d4f8ee1ee480707ee9f3210da5aca2
+$string = $key1.":".$key2.":".$ip; # c0a9cc6d8d4243c4a644f8e57d085438:56d4f8ee1ee480707ee9f3210da5aca2:1.1.1.1
 $hash = password_hash($string, PASSWORD_BCRYPT); 
 ```
 
