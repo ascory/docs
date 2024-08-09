@@ -718,7 +718,7 @@ $shopId = 1;
 $key1 = "c0a9cc6d8d4243c4a644f8e57d085438";
 $key2 = "56d4f8ee1ee480707ee9f3210da5aca2";
 $data = $_REQUEST["data"];
-$hash = $shopId.json_encode($data)..$key1.$key2;
+$hash = $shopId.json_encode($data).$key1.$key2;
 if(!password_verify($hash, $_REQUEST["hash"])){
     die("Incorrect hash.");
 }
