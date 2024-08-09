@@ -8,10 +8,10 @@ The hash is a BCrypt hashed string containing the first storage key, the second 
 Example:
 ```php
 <?php
-$id = 1;
+$shopId = 1;
 $key1 = "c0a9cc6d8d4243c4a644f8e57d085438";
 $key2 = "56d4f8ee1ee480707ee9f3210da5aca2";
-$string = $id.":".$key1.":".$key2; # 1:c0a9cc6d8d4243c4a644f8e57d085438:56d4f8ee1ee480707ee9f3210da5aca2
+$string = $shopId.":".$key1.":".$key2; # 1:c0a9cc6d8d4243c4a644f8e57d085438:56d4f8ee1ee480707ee9f3210da5aca2
 $hash = password_hash($string, PASSWORD_BCRYPT); 
 ```
 
@@ -26,6 +26,7 @@ Example:
     "data": "OK"
 }
 ```
+
 ```json
 {
     "code": 400,
@@ -35,9 +36,36 @@ Example:
     }
 }
 ```
+
 ## Webhook alerts
+We send a payment status change notification to your webhook server.
 > [!WARNING]
 > Webhook alerts don't just come at the time of a successful payment. Please check the data->type element, which can take the following values: success, refund, fail.
 
 > [!WARNING]
 > Webhook notifications come from the following IP addresses: 193.222.99.133. If you use protection (like Cloudflare), please whitelist these IP addresses.
+
+Example:
+```json
+{
+    "data": {
+        "id": 1,
+        "item": 1,
+        "amount": 0.6,
+        "email": "cowwithananas@gmail.com",
+        "comment": "It's time to pay for apple-pineapple",
+        "type": "success"
+    },
+    "hash": "$2y$10$Wi1j4wrgwrgwe884g5vw8bgvfewfwefweg/GG"
+}
+```
+
+Keep in mind that the hash sent to your webhook server is not the hash for interacting with the API! A webhook hash is generated like this:
+```php
+<?php
+$shopId = 1;
+$key1 = "c0a9cc6d8d4243c4a644f8e57d085438";
+$key2 = "56d4f8ee1ee480707ee9f3210da5aca2";
+$data = $_REQUEST["data"];
+$hash = $shopId.json_encode($data)..$key1.$key2;
+```
