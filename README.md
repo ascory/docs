@@ -526,6 +526,39 @@ $response = curl_exec($ch);
     "data": "https://t.me/CryptoBot?start=poiuytrewq"
 }
 ```
+## Shop
+Shop management using API keys
+### Balance
+```php
+<?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/commission/all");
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "accept: application/json"
+]);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, true);
+        "shop" => 1, # Shop ID
+        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
+$response = curl_exec($ch);
+?>
+```
+```json
+{
+    "code": 200,
+    "data": {
+        "amount": 1,
+        "hold": 0,
+        "history": [
+            {
+                "id": 1,
+                "amount": 1,
+                "time": 1722854524
+            }
+        ]
+    }
+}
+```
 ## Commissions and tariffs
 View Ascory commissions and tariffs
 ### All tariffs
