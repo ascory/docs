@@ -146,7 +146,6 @@ curl -X POST https://api.ascory.com/v1/item/all \
 }
 ```
 ## Invoice
-Ready to accept money? You will need to create an invoice.
 ### Create invoice
 ```bash
 curl -X POST https://api.ascory.com/v1/invoice/create \
@@ -237,7 +236,6 @@ curl -X POST https://api.ascory.com/v1/invoice/all \
 }
 ```
 ## Payment
-This part of the API allows you to customize the payment method selection window. Normal users don't need this at all, as this API is used by pay.ascory.com by default for them.
 ### Payment detail
 ```bash
 curl -X POST https://api.ascory.com/v1/payment/detail \
@@ -446,7 +444,6 @@ curl -X POST https://api.ascory.com/v1/payment/confirm \
 }
 ```
 ## Shop
-Shop management using API keys
 ### Balance
 ```bash
 curl -X POST https://api.ascory.com/v1/shop/balance \
@@ -473,7 +470,6 @@ curl -X POST https://api.ascory.com/v1/shop/balance \
 }
 ```
 ## Commissions and tariffs
-View Ascory commissions and tariffs
 ### All tariffs
 ```bash
 curl -X POST https://api.ascory.com/v1/commission/all \
@@ -535,7 +531,6 @@ curl -X POST https://api.ascory.com/v1/commission/all \
 }
 ```
 ## Currency rate
-Ascory service exchange rate pegged to the dollar
 ### All currencies
 ```bash
 curl -X POST https://api.ascory.com/v1/currency/all \
@@ -554,7 +549,6 @@ curl -X POST https://api.ascory.com/v1/currency/all \
 }
 ```
 ## Webhooks
-Manual reading of webhooks through API keys
 ### Check webhooks
 ```bash
 curl -X POST https://api.ascory.com/v1/webhook/check \
