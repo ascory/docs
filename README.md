@@ -684,5 +684,3 @@ Example:
         "type": "success"
     }
 }
-```
-```
