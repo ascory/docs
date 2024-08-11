@@ -658,7 +658,7 @@ $response = curl_exec($ch);
                 "comment": "It's time to pay for apple-pineapple",
                 "type": "success"
             },
-            "hash": "$2y$10$Wi1j4wrgwrgwe884g5vw8bgvfewfwefweg/GG"
+            "hash": "NO-INFO"
         }
     ]
 }
