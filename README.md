@@ -27,25 +27,17 @@ Example:
 
 # API Features
 ## Item
-Contains a cost and brief information about yourself. Required to create an invoice.
 ### Create item
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/item/create");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-        "name" => "Apple", # Item name (5 to 30 characters)
-        "description" => "Delicious Apple", # Item description (5 to 50 characters)
-        "amount" => 0.5 # Item price in dollars (number to hundredths from 0.1 to 100)
-]));
-$response = curl_exec($ch);
+```bash
+curl -X POST https://api.ascory.com/v1/item/create \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS",
+    "name": "Apple",
+    "description": "Delicious Apple",
+    "amount": 0.5
+}'
 ?>
 ```
 ```json
