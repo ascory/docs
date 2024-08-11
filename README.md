@@ -532,7 +532,7 @@ Shop management using API keys
 ```php
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/commission/all");
+curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/shop/balance");
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
         "accept: application/json"
 ]);
