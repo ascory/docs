@@ -38,7 +38,6 @@ curl -X POST https://api.ascory.com/v1/item/create \
     "description": "Delicious Apple",
     "amount": 0.5
 }'
-?>
 ```
 ```json
 {
@@ -53,22 +52,14 @@ curl -X POST https://api.ascory.com/v1/item/create \
 }
 ```
 ### Check item
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/item/check");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-        "id" => 1 # Item ID
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/item/check \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS",
+    "id": 1
+}'
 ```
 ```json
 {
@@ -83,22 +74,14 @@ $response = curl_exec($ch);
 }
 ```
 ### Delete item
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/item/delete");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-        "id" => 1 # Item ID
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/item/delete \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS",
+    "id": 1
+}'
 ```
 ```json
 {
@@ -113,24 +96,16 @@ $response = curl_exec($ch);
 }
 ```
 ### Edit item
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/item/edit");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-        "name" => "Pineapple", # Optional: Item name (5 to 30 characters)
-        "description" => "Very tasty apple, ah, oops, pineapple", # Optional: Item description (5 to 50 characters)
-        "amount" => 0.6 # Optional: Item price in dollars (number to hundredths from 0.1 to 100)
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/item/edit \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS",
+    "name": "Pineapple",
+    "description": "Very tasty apple, ah, oops, pineapple",
+    "amount": 0.6
+}'
 ```
 ```json
 {
@@ -521,19 +496,13 @@ $response = curl_exec($ch);
 ## Shop
 Shop management using API keys
 ### Balance
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/shop/balance");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS' # Generated API key
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/shop/balance \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS"
+}'
 ```
 ```json
 {
