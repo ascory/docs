@@ -120,21 +120,13 @@ curl -X POST https://api.ascory.com/v1/item/edit \
 }
 ```
 ### All items
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/item/all");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/item/all \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS"
+}'
 ```
 ```json
 {
@@ -156,26 +148,18 @@ $response = curl_exec($ch);
 ## Invoice
 Ready to accept money? You will need to create an invoice.
 ### Create invoice
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/invoice/create");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-        "item" => 1, # Item ID
-        "comment", => "It's time to pay for apple-pineapple", # Optional: Invoice comment (5 to 50 characters)
-        "backURL" => "https://ananasoshop.com/shopping-cart", # Optional: Backlink to your site
-        "successURL" => "https://ananasoshop.com/shopping-cart?event=success", # Optional: Backlink to your website in case of successful payment
-        "failURL" => "https://ananasoshop.com/shopping-cart?event=fail" # Optional: Backlink to your site in case of unsuccessful payment
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/invoice/create \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS",
+    "item": 1,
+    "comment": "It'\''s time to pay for apple-pineapple",
+    "backURL": "https://ananasoshop.com/shopping-cart",
+    "successURL": "https://ananasoshop.com/shopping-cart?event=success",
+    "failURL": "https://ananasoshop.com/shopping-cart?event=fail"
+}'
 ```
 ```json
 {
@@ -195,22 +179,14 @@ $response = curl_exec($ch);
 }
 ```
 ### Check invoice
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/invoice/check");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-        "id" => 1 # Invoice ID
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/invoice/check \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS",
+    "id": 1
+}'
 ```
 ```json
 {
@@ -230,21 +206,13 @@ $response = curl_exec($ch);
 }
 ```
 ### All invoices
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/invoice/all");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/invoice/all \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS"
+}'
 ```
 ```json
 {
@@ -271,21 +239,13 @@ $response = curl_exec($ch);
 ## Payment
 This part of the API allows you to customize the payment method selection window. Normal users don't need this at all, as this API is used by pay.ascory.com by default for them.
 ### Payment detail
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/payment/detail");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "id" => 1, # Invoice ID
-        "hash" => '$2a$12$mSD6cinEXuGikQPiOhGn.O5VterRiPQldN9jipmYZN6opJqPAXTF2' # Hash of invoice reference
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/payment/detail \
+-H "accept: application/json" \
+-d '{
+    "id": 1,
+    "hash": "$2a$12$mSD6cinEXuGikQPiOhGn.O5VterRiPQldN9jipmYZN6opJqPAXTF2"
+}'
 ```
 ```json
 {
@@ -469,23 +429,15 @@ $response = curl_exec($ch);
 }
 ```
 ### Confirm payment
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/payment/confirm");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "id" => 1, # Invoice ID
-        "hash" => '$2a$12$mSD6cinEXuGikQPiOhGn.O5VterRiPQldN9jipmYZN6opJqPAXTF2' # Hash of invoice reference
-        "email" => "cowwithananas@gmail.com", # Email of the person making the payment
-        "method" => "cryptobot" # Method passed in the payment information
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/payment/confirm \
+-H "accept: application/json" \
+-d '{
+    "id": 1,
+    "hash": "$2a$12$mSD6cinEXuGikQPiOhGn.O5VterRiPQldN9jipmYZN6opJqPAXTF2",
+    "email": "cowwithananas@gmail.com",
+    "method": "cryptobot"
+}'
 ```
 ```json
 {
@@ -523,18 +475,9 @@ curl -X POST https://api.ascory.com/v1/shop/balance \
 ## Commissions and tariffs
 View Ascory commissions and tariffs
 ### All tariffs
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/commission/all");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/commission/all \
+-H "accept: application/json"
 ```
 ```json
 {
@@ -594,18 +537,9 @@ $response = curl_exec($ch);
 ## Currency rate
 Ascory service exchange rate pegged to the dollar
 ### All currencies
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/currency/all");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/currency/all \
+-H "accept: application/json"
 ```
 ```json
 {
@@ -622,21 +556,13 @@ $response = curl_exec($ch);
 ## Webhooks
 Manual reading of webhooks through API keys
 ### Check webhooks
-```php
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.ascory.com/v1/webhook/check");
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "accept: application/json"
-]);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-        "shop" => 1, # Shop ID
-        "hash" => '$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS', # Generated API key
-]));
-$response = curl_exec($ch);
-?>
+```bash
+curl -X POST https://api.ascory.com/v1/webhook/check \
+-H "accept: application/json" \
+-d '{
+    "shop": 1,
+    "hash": "$2a$12$XV0yN.1HFjuLawrEJLq3buF.rboZUW5jYw0N4Ckuz0lofy7A0wEaS"
+}'
 ```
 ```json
 {
